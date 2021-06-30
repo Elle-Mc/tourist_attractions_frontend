@@ -41,10 +41,14 @@ function App(props) {
     setAttractions(data);
   }
 
-
   /////////////////////
   //useEffects
   /////////////////////
+
+  //useEffect to get list of attractions when the page loads
+  useEffect(() => {
+    getAttractions();
+  }, []);
 
   /////////////////////
   //returned JSX

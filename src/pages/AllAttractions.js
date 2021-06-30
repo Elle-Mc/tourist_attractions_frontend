@@ -1,7 +1,8 @@
 import React from "react";
+import Attraction from "../components/post"
 
 const AllAttractions = (props) => {
-  return <h1>All Attractions</h1>;
+  return props.attractions.map((attraction) => <Attraction attraction={attraction} key={attraction.id} />);
 };
 
 export default AllAttractions;
