@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Attraction = (props) => {
+const Attraction = ({ attraction }) => {
     ////////////////////////
     // Style objects
     ////////////////////////

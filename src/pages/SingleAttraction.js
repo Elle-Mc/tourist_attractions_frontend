@@ -16,10 +16,16 @@ const SingleAttraction = ({ attractions, match }) => {
     margin: "30px auto",
   }
 
-
-
-
-  return <h1>SingleAttraction</h1>;
+  return (
+    <div style={div}>
+      <h1>{attraction.place}</h1>
+      <h2>{attraction.location}</h2>
+      <h2>{attraction.went}</h2>
+      <Link to="/">
+        <button>Go Back</button>
+      </Link>
+    </div>
+   );
 };
 
 export default SingleAttraction;
