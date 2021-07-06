@@ -1,9 +1,9 @@
 //Import components
-import AllAttractions from "./pages/AllAttractions"
-import SingleAttraction from "./pages/SingleAttraction"
+import AllAttractions from "./pages/AllPosts"
+import SingleAttraction from "./pages/SinglePost"
 import Form from "./pages/Form"
 
-// Import reach and hooks 
+// Import react and hooks 
 import React, { useState, useEffect } from "react";
 
 // Import components from React Router
@@ -50,7 +50,7 @@ function App(props) {
   //Functions
   /////////////////////
 
-  //Funcation to get the list of attractions from API
+  //Function to get the list of the Attractions from API
   const getAttractions = async () => {
     const response = await fetch(url);
     const data = await response.json();
@@ -118,7 +118,7 @@ function App(props) {
   return (
     <div className="App">
       <h1 style={h1}>My Tourist Attractions</h1>
-      <Link to="/new"><button style={button}>Create New Tourist Attraction</button></Link>
+      <Link to="/new"><button style={button}>Create New Attraction</button></Link>
       <Switch>
         <Route
           exact
@@ -141,7 +141,7 @@ function App(props) {
             <Form
               {...routerProps}
               initialAttraction={nullAttraction}
-              handleSubmit={addAttractions}
+              handleSubmit={addAttraction}
               buttonLabel="Create attraction"
             />
           )}
