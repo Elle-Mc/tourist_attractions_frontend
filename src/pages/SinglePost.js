@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // destructure the props to get our attraction, including router prop match
-const SinglePost = ({ posts, match, edit, deleteAttraction }) => {
+const SinglePost = ({ posts, match, edit, deleteAttraction, history }) => {
   const id = parseInt(match.params.id); //gets the ID from the URL param
-  const post = posts.find((post) => post.id === id);
+  const post = posts.find((post) => {
+    return post.id === id
+  })
 
   ////////////////////
   //Styles

@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Post = ({ attraction }) => {
+const Post = ({ post }) => {
+
     ////////////////////////
     // Style objects
     ////////////////////////
@@ -11,15 +12,14 @@ const Post = ({ attraction }) => {
         margin: "10px auto",
         width: "80%",
     };
-  return (
-      <div style={div}>
-          <Link to={`/attraction/${attraction.id}`}>
-              <h1>{attraction.place}</h1>
-          </Link>
-            <h2>{attraction.location}</h2>
-            <h2>{attraction.went}</h2>
-      </div>
-  );
+
+    return <div style={div}>
+        <Link to={`/post/${post.id}`}>
+            <h1>{post.place}</h1>
+        </Link>
+        <h2>{post.location}</h2>
+        <h2>{post.went}</h2>
+    </div>
 };
 
 export default Post;
