@@ -141,7 +141,7 @@ function App(props) {
             <Form
               {...routerProps}
               initialAttraction={nullAttraction}
-              handleSubmit={addAttraction}
+              handleSubmit={addAttractions}
               buttonLabel="Create attraction"
             />
           )}

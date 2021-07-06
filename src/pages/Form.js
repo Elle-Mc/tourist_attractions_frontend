@@ -43,6 +43,7 @@ const Form = ({ initialAttraction, handleSubmit, buttonLabel, history }) => {
         value={formData.went}
         name="went"
       />    
+      <input type="submit" value={buttonLabel} />
     </form>
   );
 };
