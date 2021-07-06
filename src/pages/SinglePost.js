@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // destructure the props to get our attraction, including router prop match
-const SingleAttraction = ({ attractions, match }) => {
+const SinglePost = ({ posts, match, edit, deleteAttraction }) => {
   const id = parseInt(match.params.id); //gets the ID from the URL param
-  const attraction = attractions.find((attraction) => attraction.id === id);
+  const post = posts.find((post) => post.id === id);
 
   ////////////////////
   //Styles
@@ -18,9 +18,9 @@ const SingleAttraction = ({ attractions, match }) => {
 
   return (
     <div style={div}>
-      <h1>{attraction.place}</h1>
-      <h2>{attraction.location}</h2>
-      <h2>{attraction.went}</h2>
+      <h1>{post.place}</h1>
+      <h2>{post.location}</h2>
+      <h2>{post.went}</h2>
       <button onClick={(event) => edit(post)}>Edit</button>
       <button onClick={(event) => deleteAttraction(post)}>Delete</button>
       <Link to="/">
@@ -30,4 +30,4 @@ const SingleAttraction = ({ attractions, match }) => {
    );
 };
 
-export default SingleAttraction;
+export default SinglePost;

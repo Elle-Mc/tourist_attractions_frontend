@@ -1,6 +1,6 @@
 //Import components
-import AllAttractions from "./pages/AllPosts"
-import SingleAttraction from "./pages/SinglePost"
+import AllPosts from "./pages/AllPosts"
+import SinglePost from "./pages/SinglePost"
 import Form from "./pages/Form"
 
 // Import react and hooks 
@@ -34,7 +34,7 @@ function App(props) {
   const url = "https://tourist-attractions-em.herokuapp.com/attractions/";
 
   // State to hold the attractions
-  const [attractions, setAttractions] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   //An object that represents a null attraction
   const nullAttraction = {
@@ -54,7 +54,7 @@ function App(props) {
   const getAttractions = async () => {
     const response = await fetch(url);
     const data = await response.json();
-    setAttractions(data);
+    setPosts(data);
   }
 
   //Function to add attraction from form data
@@ -123,13 +123,13 @@ function App(props) {
         <Route
           exact
           path="/"
-          render={(routerProps) => <AllAttractions {...routerProps} attractions={attractions} />}/>
+          render={(routerProps) => <AllPosts posts={posts} {...routerProps} />}/>
         <Route
-          path="/attractions/:id"
+          path="/post/:id"
           render={(routerProps) => (
-            <SingleAttraction 
+            <SinglePost
             {...routerProps} 
-            attractions={attractions} 
+            posts={posts}
             edit={getTargetAttraction} 
             deleteAttraction={deleteAttraction}
             /> 

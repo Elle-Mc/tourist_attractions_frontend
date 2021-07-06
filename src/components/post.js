@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Attraction = ({ attraction }) => {
+const Post = ({ attraction }) => {
     ////////////////////////
     // Style objects
     ////////////////////////
@@ -22,4 +22,4 @@ const Attraction = ({ attraction }) => {
   );
 };
 
-export default Attraction;
+export default Post;
