@@ -7,7 +7,7 @@ import Form from "./pages/Form"
 import React, { useState, useEffect } from "react";
 
 // Import components from React Router
-import {Route, Switch } from "react-router-dom";
+import { Route, Switch, Link } from "react-router-dom";
 
 function App(props) {
 
@@ -20,6 +20,12 @@ function App(props) {
     margin: "10px",
   }
 
+  const button = {
+    backgroundColor: "navy",
+    display: "block",
+    margin: "auto",
+  }
+
   /////////////////////
   //State and other variables
   /////////////////////
@@ -29,6 +35,16 @@ function App(props) {
 
   // State to hold the attractions
   const [attractions, setAttractions] = useState([]);
+
+  //An object that represents a null attraction
+  const nullAttraction = {
+    place: "",
+    location: "",
+    went: "",
+  };
+
+  //Const state to hold attraction to edit it
+  const [targetAttraction, setTargetAttraction] = useState(nullAttraction);
 
   /////////////////////
   //Functions
@@ -40,6 +56,51 @@ function App(props) {
     const data = await response.json();
     setAttractions(data);
   }
+
+  //Function to add attraction from form data
+  const addAttractions = async (newAttraction) => {
+    const response = await fetch(url, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newAttraction),
+    });
+    
+    //get updated list of attractions
+    getAttractions();
+  };
+
+  //Function to select attraction to edit
+  const getTargetAttraction = (attraction) => {
+    setTargetAttraction(attraction);
+    props.history.push("/edit");
+  };
+
+  //Function to edit attractions on form submission
+  const updateAttraction = async (attraction) => {
+    const response = await fetch(url + attraction.id + "/", {
+      method: "put",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(attraction),
+    });
+
+    //get updated list of attractions
+    getAttractions();
+  }
+
+  //Function to delete attraction on form submission
+  const deleteAttraction = async (attraction) => {
+    const response = await fetch(url + attraction.id + "/", {
+      method: "delete",
+    });
+
+    //get updated list of attractions
+    getAttractions();
+    props.history.push("/");
+  };
 
   /////////////////////
   //useEffects
@@ -57,6 +118,7 @@ function App(props) {
   return (
     <div className="App">
       <h1 style={h1}>My Tourist Attractions</h1>
+      <Link to="/new"><button style={button}>Create New Tourist Attraction</button></Link>
       <Switch>
         <Route
           exact
@@ -65,14 +127,35 @@ function App(props) {
         <Route
           path="/attractions/:id"
           render={(routerProps) => (
-            <SingleAttraction {...routerProps} attractions={attractions} /> )} />
+            <SingleAttraction 
+            {...routerProps} 
+            attractions={attractions} 
+            edit={getTargetAttraction} 
+            deleteAttraction={deleteAttraction}
+            /> 
+          )} 
+        />
         <Route 
           path="/new"
-          render={(routerProps) => <Form {...routerProps} />}
+          render={(routerProps) => (
+            <Form
+              {...routerProps}
+              initialAttraction={nullAttraction}
+              handleSubmit={addAttractions}
+              buttonLabel="Create attraction"
+            />
+          )}
         />
         <Route 
           path="/edit"
-          render={(routerProps) => <Form {...routerProps} />}
+          render={(routerProps) => (
+            <Form
+              {...routerProps}
+              initialAttraction={targetAttraction}
+              handleSubmit={updateAttraction}
+              buttonLabel="Update attraction"
+          />
+        )}
         />
       </Switch>
     </div>

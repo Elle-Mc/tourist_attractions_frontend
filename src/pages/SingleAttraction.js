@@ -21,6 +21,8 @@ const SingleAttraction = ({ attractions, match }) => {
       <h1>{attraction.place}</h1>
       <h2>{attraction.location}</h2>
       <h2>{attraction.went}</h2>
+      <button onClick={(event) => edit(attraction)}>Edit</button>
+      <button onClick={(event) => deleteAttraction(attraction)}>Delete</button>
       <Link to="/">
         <button>Go Back</button>
       </Link>
