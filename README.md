@@ -7,7 +7,7 @@
 
     - *Show page*: <br /><br /><img src="https://i.imgur.com/FKcZ1Xz.png" width="250"> 
 
-- <b>Technologies used</b>: React, MongoDB, Mongoose, Express, Node.js
+- <b>Technologies used</b>: React, Rails
 
 - [Click here to check out the live app.](https://60e4d0851700ea488d7e083a--goofy-jang-1291fb.netlify.app/)
 
