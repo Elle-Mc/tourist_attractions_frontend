@@ -13,8 +13,8 @@ const SinglePost = ({ posts, match, edit, deleteAttraction, history }) => {
   ////////////////////
   const div = {
     textAlign: "center",
-    border: "3px solid green",
-    width: "80%",
+    border: "3px navy",
+    width: "50%",
     margin: "30px auto",
   }
 

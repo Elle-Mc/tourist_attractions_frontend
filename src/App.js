@@ -17,11 +17,11 @@ function App(props) {
 
   const h1 = {
     textAlign: "center",
-    margin: "10px",
+    margin: "20px",
   }
 
   const button = {
-    backgroundColor: "navy",
+    backgroundColor: "pink",
     display: "block",
     margin: "auto",
   }
